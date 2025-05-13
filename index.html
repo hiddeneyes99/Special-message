@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Special Message ✨</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7, #a29bfe);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 20px 30px;
+      border-radius: 15px;
+      width: 90%;
+      max-width: 600px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+
+    .message-box {
+      background: #f7f7f7;
+      padding: 15px;
+      border-radius: 10px;
+      height: 300px;
+      overflow-y: auto;
+      text-align: left;
+      font-size: 16px;
+      color: #333;
+      box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .footer {
+      margin-top: 15px;
+      font-size: 14px;
+      color: #6c5ce7;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>🌟 Special Message for You! 🌟</h2>
+    <div class="message-box" id="messageBox">
+      <p id="message"></p>
+    </div>
+    <p class="footer">With best wishes 🫶</p>
+  </div>
+
+  <!-- 🎵 Background music -->
+  <audio id="backgroundMusic" src="To jaane na 2.mp3" autoplay muted playsinline loop></audio>
+
+  <script>
+    const text = `Hello... kya haal hai? 😊
+Kya kar rahi thi?
+Arey main bhi na... kya puchhne laga 🤦‍♂️
+Kisi aur chiz ke liye ye banaya tha, par chalo ab main kaam ki baat karta hoon... ✨
+
+Ab tum exam dene ja rahi ho ✍️ aur main Kolkata jaa raha hoon 🚉...
+Shaayad aaj mil bhi na paayein 🥺
+Socha tha jaane se pehle tumhare saath thoda waqt bitaun ⏳
+Lekin lagta hai kismat ko kuch aur manzoor tha 💔
+
+Khair, wo sab chhodo...
+Main bas tumhare liye jaane se pehle kuch special karna chahta tha 🎁
+Par itne log the ki kuch kar hi nahi paaya 😞
+Tab socha – apna talent hi use kar leta hoon 😎
+Isliye ye message likha hai ✍️💌
+
+Dekho... exam to aate jaate rahenge 📚
+Iska zyada tension mat lena 😌
+Kaam ka pressure to bilkul bhi nahi lena ❌💼
+Aur agar kabhi low feel karo 😔
+To bina soche mujhe message ya call kar lena 📞💬
+Main hamesha available rahunga... just for you ❤️‍🔥
+
+Exam sirf logon ko “best” banata hai 🏆
+Aur tum to pehle se hi best ho 🌟
+Tension lena hi nahi hai!
+Thoda bahut padh lena 📖
+Aur agar answer na aaye to...
+Bagal wale se dekh lena 👀😂
+(kyuki asli talent wahi hota hai – bina padhe bhi topper waali feeling le aana) 😅🧠
+
+Kaam ho ya pressure – kabhi khud pe haavi mat hone dena 😤
+Aur agar koi unnecessary pressure de to...
+Ek chate de dena, sab theek ho jaayega 🫢👋😂
+
+Aur haan... yaad rakhna: 🧠
+Kabhi bhi kuch problem ho – kuch bhi 🛠️
+Chahe chhota ho ya bada, sabse pehle mujhe yaad karna 🫶
+Main har possible way mein tumhari help karunga 🤝
+You know na... meri bail buddhi sab kuch possible bana deti hai 🤪🧠⚡
+
+Sach kahun to... jaana ka mann bilkul nahi hai 😞
+Par jaana zaroori hai... warna TWH aur mere sapne adhoore reh jaayenge 🌈🚀
+Dukh is baat ka nahi ki Kolkata jaa raha hoon
+Dukh is baat ka hai ki tumse mile bina jaa raha hoon 🥲💔
+Par kya karein... kabhi kabhi waqt aur halat haara dete hain 🕰️🤷‍♂️
+Allah ne already bahut kuch de diya hai 🙏
+Yaha tak bus ko bhi late karwa diya 🚌✋
+
+Phir bhi...
+Main khush hoon ki tum exam dene ja rahi ho 📚✊
+Aur is waqt tumhe sirf ek chiz chahiye –
+Confidence 💪🔥
+Aur vo tumhare andar already hai 🌟
+
+Bus itna he bolna chahta tha. Please kuch bhi help ka jarurat pade Mujhe pahle yad karna chahe mujhse Ho ya Na Ho fir bhi Ek message karke jarur bolna. Gyan nahi tumhara sath dunga chaiye situation kuch bhi ho.
+
+Good luck for your exams! 🍀✨
+See you soon... 🫂
+Aur hamesha smile karte rehna 😄🌸
+Bye for now... but not for long 👋💖
+
+You are the best! 🦸‍♀️ Take care 🫶😘"`;
+
+    const messageEl = document.getElementById("message");
+    const messageBox = document.getElementById("messageBox");
+    const music = document.getElementById('backgroundMusic');
+    let i = 0;
+
+    function typeMessage() {
+      if (i < text.length) {
+        messageEl.innerHTML += text.charAt(i) === "\n" ? "<br>" : text.charAt(i);
+        i++;
+
+        // ✅ Auto-scroll to bottom after every character
+        messageBox.scrollTop = messageBox.scrollHeight;
+
+        setTimeout(typeMessage, 80); // Typing speed: 80ms per character
+      }
+    }
+
+    window.onload = () => {
+      typeMessage();
+
+      // 🔊 Unmute after ensuring autoplay starts instantly
+      music.play().then(() => {
+        music.muted = false; // Unmute after successful play
+      }).catch(() => {
+        // If autoplay is blocked, play on first user interaction
+        document.body.addEventListener('click', () => {
+          music.muted = false;
+          music.play();
+        }, { once: true });
+      });
+    };
+  </script>
+</body>
+</html>
